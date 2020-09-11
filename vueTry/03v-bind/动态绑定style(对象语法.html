@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/Users/xixianbin/frontend/js/vue.js"></script>
+</head>
+
+<body>
+    <div id='app' v-bind:style='styleObject'>我靠 </div>
+
+
+    <script>
+        const app = new Vue({
+            el: ' #app ', //or            el: document.querySelector('#app '),
+            data: {
+                message: " 你好呀 ",
+                finalsize: 100,
+                movies: ['aaa ', 'bbb ', 'ccc ', 'ddd '],
+                styleObject: {
+                    color: 'red',
+                    fontSize: "100px"
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

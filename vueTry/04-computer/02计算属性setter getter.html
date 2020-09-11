@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="/Users/xixianbin/frontend/js/vue.js"></script>
+</head>
+
+<body>
+  <div id='app'> {{fullname}}</div>
+  <script>
+    const app = new Vue({
+      el: '#app', //or            el: document.querySelector('#app'),
+      data: {
+        firstname: "xixianbin",
+        lastname: "bob",
+      },
+      computed: {
+        fullname: {
+          set: function (newValue) {
+            console.log('set ----', newValue)
+            console.log(newValue)
+          },
+          get: function () {
+            return this.firstname + "--" + this.lastname
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="/Users/xixianbin/frontend/js/vue.js"></script>
+
+</head>
+
+<body>
+  <div id="app">
+    <!-- <button v-on:click="counter++">+</button>
+        <button v-on:click="counter--">-</button> -->
+    <!-- .stop 阻止单击事件继续传播 -->
+
+    <div @click='divclick'>aaaaaaaaa
+      <button @click.stop='btnclick'>按钮1</button>
+    </div>
+
+    <br>
+    <br>
+    <!-- .prevent 阻止单击事件继续传播 -->
+
+    <form action="baidu">
+
+      <input type="submit" value="提交" @click.prevent='submiclick'>
+    </form>
+
+    <!-- . 监听某个键盘的键帽 -->
+
+    <input type="text"  @keyup='keyup'>
+
+
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: '#app', //or            el: document.querySelector('#app'),
+      data: {
+        counter: 0,
+      },
+      methods: {
+        btnclick: function () {
+          console.log('btnclick')
+        },
+        divclick: function () {
+          console.log('divclick')
+        },
+      
+        add: function () {
+          console.log('add 被执行')
+          this.counter++
+        },
+        sub: function () {
+          console.log('sub 被执行')
+          this.counter--
+        },
+        submiclick(){
+          console.log('submiclicksubmiclicksubmiclick')
+        },
+        keyup(){
+          console.log('keyup')
+        },
+      }
+    })
+  </script>
+</body>
+
+</html>

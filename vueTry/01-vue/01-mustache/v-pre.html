@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/Users/xixianbin/frontend/js/vue.js"></script>
+</head>
+
+<body>
+
+    <div id='app'>
+        <h2 v-pre>{{message}},世界！ </h2>
+        <h2 v-once>{{message}},世界！ </h2>
+
+
+    </div>
+    <script>
+        const app = new Vue({
+            el: '#app', //or            el: document.querySelector('#app'),
+            data: {
+                message: "你好呀",
+                firstname: "hello",
+                lastname: "world",
+                counter: 100
+            }
+        })
+    </script>
+</body>
+
+</html>
