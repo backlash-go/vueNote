@@ -9,24 +9,12 @@
 </head>
 
 <body>
-  <div id='app'> {{fullname}}</div>
+  <div id='app'> {{message}}</div>
   <script>
     const app = new Vue({
       el: '#app', //or            el: document.querySelector('#app'),
       data: {
-        firstname: "xixianbin",
-        lastname: "bob",
-      },
-      computed: {
-        fullname: {
-          set: function (newValue) {
-            console.log('set ----', newValue)
-            console.log(newValue)
-          },
-          get: function () {
-            return this.firstname + "--" + this.lastname
-          }
-        }
+        message: "你好呀",
       }
     })
   </script>

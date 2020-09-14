@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="/Users/xixianbin/vueNote/js/vue.js"></script>
+</head>
+
+<body>
+  <div id='app'> {{message}}
+
+    <!-- //单选 -->
+
+    <input type="checkbox" id="agree" v-model='isagree'>同意协议
+    <button :disabled='!isagree'>下一步</button>
+    <br>
+    <h2>{{isagree}}</h2>
+
+
+    <!-- //多选 -->
+    <input type="checkbox" name="" value="篮球" id="" v-model='hobbys'>篮球
+    <input type="checkbox" name="" value="足球" id="" v-model='hobbys'>足球
+    <input type="checkbox" name="" value="兵乓球" id="" v-model='hobbys'>兵乓球
+    <input type="checkbox" name="" value="羽毛球" id="" v-model='hobbys'>羽毛球
+
+
+  <h2>你的爱好: {{hobbys}}</h2>
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app', //or            el: document.querySelector('#app'),
+      data: {
+        message: "你好呀",
+        isagree: false,
+        hobbys: [],
+      }
+    })
+  </script>
+</body>
+
+</html>

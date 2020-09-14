@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="/Users/xixianbin/vueNote/js/vue.js"></script>
+  <style>
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id='app'>
+    <ul>
+      <li v-for='(item, index) in movies' v-bind:class='{active: currentIndex === index}'
+       @click='indclick(index)'>{{index}}.{{item}}
+      </li>
+    </ul>
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app', //or            el: document.querySelector('#app'),
+      data: {
+        message: "你好呀",
+        movies: ['海王', '海贼王', '加勒比海盗', '海尔兄弟'],
+        currentIndex: 100
+      },
+      methods: {
+        indclick(index) {
+          this.currentIndex = index
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
