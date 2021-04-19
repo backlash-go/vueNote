@@ -9,15 +9,30 @@
 </head>
 
 <body>
-  <div id='app'> {{message}}</div>
+  <div id="app">{{message}}
+    <cpn><span slot="center">呵呵</span></cpn>
+  </div>
 
+
+  <template id="cpn">
+    <div>
+      <slot name="left">left</slot>
+      <slot name="center">center</slot>
+      <slot name="right">right</slot>
+      <slot><span>hahah</span></slot>
+    </div>
+  </template>
 
   <script>
-  
     const app = new Vue({
       el: '#app', //or            el: document.querySelector('#app'),
       data: {
         message: "你好呀",
+      },
+      components: {
+        cpn: {
+          template: `#cpn`
+        }
       }
     })
   </script>

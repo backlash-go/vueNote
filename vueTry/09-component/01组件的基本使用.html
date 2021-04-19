@@ -9,15 +9,28 @@
 </head>
 
 <body>
-  <div id='app'> {{message}}</div>
-
-
+  <div id="app">{{message}}
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+  </div>
   <script>
-  
+    const cpnC = Vue.extend({
+      template: `<div>
+          <h2>我是标题</h2>
+          <p>我是内容</p>
+        </div>`
+    })
+    // 1 全局组件可以在多个vue 实例中使用
+    // Vue.component('cpn', cpnC)
+
     const app = new Vue({
       el: '#app', //or            el: document.querySelector('#app'),
       data: {
         message: "你好呀",
+      },
+      components: {
+        cpn: cpnC
       }
     })
   </script>

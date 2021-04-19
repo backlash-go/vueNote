@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="/Users/xixianbin/vueNote/js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">{{message}}
+    <!-- <cpn/> 等价于 <cpn></cpn> -->
+    <cpn ref="xxb"></cpn>
+    <cpn></cpn>
+    <button @click="btnClick">按钮</button>
+  </div>
+  <script>
+    const cpnC = Vue.extend({
+      template: `<div>
+          <h2>我是标题</h2>
+          <p>我是内容</p>
+          <h3>我是子组件</h3>
+        </div>`,
+      methods: {
+        showMessage() {
+          console.log('showMessage')
+        }
+      },
+      data() {
+        return {
+          name: "我是子组件的name"
+        }
+      }
+    })
+
+    const app = new Vue({
+      el: '#app', //or            el: document.querySelector('#app'),
+      data: {
+        message: "你好呀",
+      },
+      methods: {
+        btnClick() {
+          //1 this.$children
+          // console.log(this.$children)
+          // for (let c of this.$children) {
+          //   console.log(c.name)
+          //   c.showMessage()
+          //   console.log(this.$children.length); 
+          // }
+          //2  --》  this.$ref
+          console.log(this)
+          console.log(this.$refs.xxb.name)
+          this.$refs.xxb.showMessage()
+        }
+      },
+      components: {
+        cpn: cpnC
+      }
+    })
+  </script>
+</body>
+
+</html>

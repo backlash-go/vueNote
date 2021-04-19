@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="/Users/xixianbin/vueNote/js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <cp v-bind:comovies="movie" :cmessage="message"></cp>
+  </div>
+
+  <template id="cpn1">
+    <div>
+      <ul>
+        <li v-for="item in comovies">{{item}}</li>
+      </ul>
+      <h2>{{comovies}}</h2>
+      <h3>{{cmessage}}</h3>
+    </div>
+  </template>
+
+  <script>
+    // 父传子 通过 props
+    const cpn = Vue.extend({
+      template: '#cpn1',
+      props: {
+        cmessage: {
+          type: String, //制定类型 
+          default: 'aaaaa', // 设置默认值
+          require: false // 是否必须传递
+        },
+        comovies: {
+          type: Array,
+          default () {
+            return ['aa']
+          }
+        }
+      }
+    })
+    const app = new Vue({
+      el: '#app', //or            el: document.querySelector('#app'),
+      data: {
+        message: 'hello boy',
+        movie: ['海王', '海贼王', '奥特曼']
+      },
+      components: {
+        cp: cpn
+      },
+    })
+  </script>
+</body>
+
+</html>

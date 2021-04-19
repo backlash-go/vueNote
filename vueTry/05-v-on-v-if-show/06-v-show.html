@@ -10,10 +10,10 @@
 
 <body>
   <div id='app'>
-    <h2 v-if='ishow' id='aaa'>{{message}}</h2>
     <h2 v-show='ishow' id='bbb'>{{message}}</h2>
     <h1 style="display: none; text-align: center;">{{message}}</h1>
     <h1 style="text-align: center;">{{message}}</h1>
+
 
 
   </div>
@@ -23,7 +23,8 @@
       data: {
         message: "你好呀",
         ishow: false,
-        score: 99
+        score: 99,
+        ok: false
       },
     })
   </script>

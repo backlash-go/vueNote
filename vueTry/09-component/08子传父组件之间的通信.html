@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="/Users/xixianbin/vueNote/js/vue.js"></script>
+</head>
+
+<body>
+  <div id='app'>
+    <cp v-on:iclick='cpnclick'></cp>
+  </div>
+
+
+  <template id='cpn1'>
+    <div>
+      <button v-for='item in catalogs' v-on:click='itemclick(item)'>{{item.name}}</button>
+    </div>
+  </template>
+
+  <script>
+    //1 子组件
+    const cpn = Vue.extend({
+      template: '#cpn1',
+      data: function () {
+        return {
+          catalogs: [{
+              id: 'aaa',
+              name: '热门推荐'
+            },
+            {
+              id: 'bbb',
+              name: '手机数码'
+            },
+            {
+              id: 'ccc',
+              name: '家用家电'
+            },
+            {
+              id: 'ddd',
+              name: '计生情趣'
+            },
+          ]
+        }
+      },
+      methods: {
+        itemclick(item) {
+          console.log(item)
+          this.$emit('iclick',item)
+        },
+
+      },
+
+    })
+    //2 父组件
+    const app = new Vue({
+      el: '#app', //or            el: document.querySelector('#app'),
+      data: {
+        message: 'hello boy',
+        movie: ['海王', '海贼王', '奥特曼']
+      },
+      components: {
+        cp: cpn
+      },
+      methods: {
+        cpnclick(item) {
+          console.log('cpnclick')
+          console.log(item.name)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

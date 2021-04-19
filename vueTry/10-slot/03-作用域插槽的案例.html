@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="/Users/xixianbin/vueNote/js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <cpn>
+      <slot slot-scope="slot">
+        <span v-for="item in slot.data">{{item}}  br---</span>
+      </slot>
+    </cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <slot :data="pLanguages">
+        <ul>
+          <li v-for="item in pLanguages"> {{item}}</li>
+        </ul>
+      </slot>
+    </div>
+  </template>
+
+  <script>
+    const app = new Vue({
+      el: '#app', //or            el: document.querySelector('#app'),
+      data: {
+        message: "你好呀",
+      },
+      components: {
+        cpn: {
+          template: `#cpn`,
+          data() {
+            return {
+              pLanguages: ['javascripts', 'go', 'python', 'java']
+            }
+          },
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
